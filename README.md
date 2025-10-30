@@ -28,7 +28,7 @@ pip install numpy pandas scikit-learn
 
 ## Project Structure
 biometric_classifier/
-├── main.pys
+├── main.py
 ├── model.py
 ├── data/
 │   └── dataset.npy
@@ -40,3 +40,4 @@ biometric_classifier/
 - Real biometric classifiers using image or audio data
 - Integration with deep learning frameworks
 - Scalable authentication platforms using AI
+
