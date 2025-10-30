@@ -1,5 +1,5 @@
-# Biometric Classifier with Machine Learning
-A machine learning project that classifies user identities from synthetic biometric feature datasets.
+# Biometric Classifier
+A project that classifies user identities from synthetic biometric feature datasets.
 
 ## Overview
 This project trains a **K-Nearest Neighbors (KNN)** model to classify users based on numerical biometric patterns.  
@@ -40,4 +40,5 @@ biometric_classifier/
 - Real biometric classifiers using image or audio data
 - Integration with deep learning frameworks
 - Scalable authentication platforms using AI
+
 
