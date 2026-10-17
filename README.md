@@ -1,44 +1,64 @@
 # Biometric Classifier
-A project that classifies user identities from synthetic biometric feature datasets.
 
-## Overview
-This project trains a **K-Nearest Neighbors (KNN)** model to classify users based on numerical biometric patterns.  
-It simulates how AI can recognize individuals using distinctive patterns in their biometric data.
+![Conceptual illustration of Biometric Classifier; not program output](assets/conceptual-cover.webp)
 
-## Features
-- Synthetic dataset generation  
-- Machine learning training and testing  
-- Accuracy evaluation  
-- Modular and extensible design  
+*Conceptual illustration, not program output.*
 
-## Technologies Used
-- **Python**
-- **NumPy**
-- **Pandas**
-- **scikit-learn**
+An educational experiment in classifying synthetic user vectors with K-nearest neighbors.
 
-## Installation
-```bash
-pip install numpy pandas scikit-learn
+## Problem and objective
 
-## Usage
-- Run main.py.
-- The script generates a dataset, trains a KNN model, and evaluates its accuracy.
-- The final accuracy is displayed in the console.
+Explore a supervised classification workflow: generate labeled numerical samples, train a classifier, and evaluate predictions on a held-out subset.
 
-## Project Structure
-biometric_classifier/
-├── main.py
-├── model.py
-├── data/
-│   └── dataset.npy
-├── requirements.txt
-└── README.md
+## Scope and limitations
 
-## Scalability
-- Can evolve into:
-- Real biometric classifiers using image or audio data
-- Integration with deep learning frameworks
-- Scalable authentication platforms using AI
+All vectors are synthetic. This is not face recognition, fingerprint recognition, or production authentication. High scores on separated random clusters do not establish biometric accuracy, robustness, or fairness. No real biometric dataset, persisted model, or API is included.
 
+## How it works
 
+`model.py` generates 10 random user centers, 20 noisy samples per center, and 64 features per sample. A seeded, stratified 70/30 split trains a 3-neighbor classifier. The reported metric is **accuracy**, not precision. The seed makes the demonstration repeatable.
+
+## Technologies
+
+Python, NumPy, scikit-learn (KNN, data splitting, accuracy).
+
+## Installation and configuration
+
+Use Python 3.11. From the repository root:
+
+```powershell
+python -m venv .venv
+.venv/Scripts/python -m pip install -r requirements-lock.txt
+```
+
+`requirements-lock.txt` records the reviewed environment; `requirements.txt` lists direct dependencies.
+
+On macOS/Linux, replace `.venv/Scripts/python` with `.venv/bin/python`.
+
+## Run and example output
+
+```powershell
+.venv/Scripts/python main.py
+```
+
+```text
+Synthetic test accuracy: 100.00%
+```
+
+This is an observed result for the bundled synthetic generator and seed, not a real-world performance claim.
+
+## Data source
+
+Generated in memory by `generate_dataset`; no download or real identities.
+
+## Verification
+
+```powershell
+.venv/Scripts/python -m unittest discover -s tests -v
+```
+
+Verified with Python 3.11.9: two unit tests and the synthetic demo passed. Tests check reproducible data and classification on the generated users.
+
+## Possible next steps
+
+Future work could compare classifiers and test overlapping synthetic clusters. Real biometric evaluation would require a separate dataset, protocol, and privacy design.

@@ -1,5 +1,5 @@
 from model import train_and_evaluate
 
-acc, model = train_and_evaluate()
-print(f"Precision of the biometric classifier: {acc*100:.2f}%")
-
+if __name__ == "__main__":
+    accuracy, model = train_and_evaluate()
+    print(f"Synthetic test accuracy: {accuracy:.2%}")
